@@ -31,6 +31,13 @@ pipeline {
           echo " This is output step of Deploy"
           
         }
+         stage("Webhook") {
+        
+        steps {
+          
+          echo " webhook step"
+          
+        }
         
   }
 
