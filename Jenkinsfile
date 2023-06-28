@@ -1,52 +1,32 @@
 pipeline {
-  
-  agent any 
-    
+    agent any
+
     stages {
-      
-      stage("Build") {
-        
-        steps {
-          
-          echo " This is output of Build"
-          
-        }
-        
-      }
-      
-      stage("Test") {
-        
-        steps {
-          
-          echo " This is output of Test"
-          
-        }
-        
-      }
-      
-      stage("deploy") {
-        
-        steps {
-          
-          echo " This is output step of Deploy"
-          
+        stage ('Compile Stage') {
+
+            steps {
+                withMaven(maven : 'maven_3_5_0') {
+                    sh 'mvn clean compile'
+                }
+            }
         }
 
-      }
-         stage("Webhook") {
-        
-        steps {
-          
-          echo " webhook step"
-          
-        }
-        
-  }
+        stage ('Testing Stage') {
 
+            steps {
+                withMaven(maven : 'maven_3_5_0') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'maven_3_5_0') {
+                    sh 'mvn deploy'
+                }
+            }
+        }
     }
-
 }
-      
-
-    
-  
