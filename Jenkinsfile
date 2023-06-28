@@ -1,12 +1,12 @@
-pipeline{
+pipeline {
   
-  agent any{
+  agent any {
     
     stages {
       
       stage("Build") {
         
-        steps{
+        steps {
           
           echo " This is output of Build"
           
@@ -16,7 +16,7 @@ pipeline{
       
       stage("Test") {
         
-        steps{
+        steps {
           
           echo " This is output of Test"
           
@@ -26,7 +26,7 @@ pipeline{
       
       stage("deploy") {
         
-        steps{
+        steps {
           
           echo " This is output step of Deploy"
           
